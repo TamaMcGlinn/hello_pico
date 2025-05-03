@@ -2,7 +2,9 @@
 
 This is an example to jump off from coding a Raspberry Pi Pico using the Ada programming language.
 I've condensed this for my own future reading from the [more complete guide here](https://pico-doc.synack.me/), and
-added configurations for VSCode and Vimspector to connect to gdb using a debug adapter.
+added configurations for [VSCode](https://code.visualstudio.com/download) and
+[Vimspector](https://github.com/puremourning/vimspector) to connect to gdb using the debug interface; that's what
+the 3 wires are for which you'll find across the top of the short side of a Pico, on the opposite end from the usb connector.
 
 ## Pre-requisites
 
@@ -35,7 +37,7 @@ If using OpenOCD on a raspberry pi, for example by doing:
 ssh tama@raspi -L3333:localhost:3333 "openocd -f interface/raspberrypi-swd.cfg -f target/rp2040.cfg"
 ```
 
-you can connect to that port-forwarded instance of openocd with these commands:
+If using vimspector or VSCode, you can just launch. If you need to run gdb directly instead, enter this in a terminal:
 
 ```
 eval $(alr printenv)
@@ -46,6 +48,6 @@ load
 run
 ```
 
-And then when any edits have been made to the code, do `make build` again, then pause the debugger, and give gdb the `load` command.
-In VSCode you can enter `load` in the Debug console. If using [vimspector](https://github.com/puremourning/vimspector),
+When edits have been made to the code, do `make build` again, pause the debugger, and give gdb the `load` command.
+In VSCode you can enter `load` in the Debug console to do that. If using vimspector,
 enter `-exec load` in the vimspector console.
