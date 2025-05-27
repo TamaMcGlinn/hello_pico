@@ -11,5 +11,5 @@ build: bin/hello_pico
 bin/hello_pico.uf2: bin/hello_pico
 	picotool uf2 convert bin/hello_pico -t elf bin/hello_pico.uf2
 
-bin/hello_pico: src/hello_pico.adb
+bin/hello_pico: src/* *.gpr config/*
 	alr build --development
